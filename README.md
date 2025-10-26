@@ -1,1 +1,3 @@
 # AccountManagment
+3070
+App create করবো ফার্স্ট এ তাহলে Activitymain.xml and java file open হবে আমাদের আরো empty view activity create kortay hoibo . activity_login.xml  and java /// activity_signup.xml  and java .....
