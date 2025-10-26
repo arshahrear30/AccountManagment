@@ -11,30 +11,6 @@
     android:gravity="center"
     >
 
-    <RelativeLayout
-        android:layout_width="220dp"
-        android:layout_height="220dp"
-        android:layout_marginBottom="20dp"
-        >
-
-        <ImageView
-            android:layout_width="220dp"
-            android:layout_height="220dp"
-            android:src="@drawable/ic_launcher_background"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Change Photo"
-            android:background="#857C7C"
-            android:gravity="center"
-            android:layout_alignParentBottom="true"
-            android:padding="8dp"
-            />
-
-
-    </RelativeLayout>
-
-
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -70,37 +46,23 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Name"
-        >
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SignUp"/>
+        android:text="Login"/>
 
      <TextView
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
          android:layout_marginTop="20dp"
-         android:text="Already have an account?"
+         android:text="Don't have an account?"
          android:gravity="center"
          />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:text="SignUp"
         android:backgroundTint="#4CAF50"
         />
 
