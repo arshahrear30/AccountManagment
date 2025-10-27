@@ -17,10 +17,12 @@
         >
 
         <ImageView
+            android:id="@+id/imageProfile"
             android:layout_width="220dp"
             android:layout_height="220dp"
             android:src="@drawable/ic_launcher_background"/>
         <TextView
+            android:id="@+id/tvChangePhoto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Change Photo"
@@ -42,6 +44,7 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
@@ -62,6 +65,7 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
@@ -76,6 +80,7 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
@@ -84,6 +89,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
+        android:id="@+id/buttonSignup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="SignUp"/>
@@ -97,7 +103,8 @@
         />
 
     <Button
-        android:layout_width="match_parent"
+        android:id="@+id/buttonLogin"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Login"
         android:backgroundTint="#4CAF50"
