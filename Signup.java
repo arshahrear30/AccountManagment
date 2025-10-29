@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -26,9 +27,10 @@ import com.android.volley.toolbox.Volley;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.io.ByteArrayOutputStream;
-import java.util.Base64;
+import android.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
+
 
 public class Signup extends AppCompatActivity {
 
@@ -74,20 +76,33 @@ public class Signup extends AppCompatActivity {
                 BitmapDrawable bitmapDrawable=(BitmapDrawable) imageProfile.getDrawable();
                 Bitmap bitmap=bitmapDrawable.getBitmap();
                 ByteArrayOutputStream outputStream=new ByteArrayOutputStream();
-                Bitmap.compress(Bitmap.CompressFormat.JPEG,100,outputStream);
+                bitmap.compress(Bitmap.CompressFormat.JPEG,100,outputStream);
 
                 byte[] imageBytes=outputStream.toByteArray();
-                String image= Base64.encodeToString(imageBytes,Base64.DEFAULT);
+                String image= Base64.encodeToString(imageBytes,Base64.DEFAULT);//import java.util.Base64;এর জায়গায় import android.util.Base64; এইটা replace করলে error যাবে
 
-                String url="http:";
+                String url="https://nubsoft.xyz/apps/signup.php";
                 StringRequest stringRequest=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String s) {
 
+                        new AlertDialog.Builder(Signup.this)
+                                .setTitle("Server Response")
+                                .setMessage("response")
+                                .create()
+                                .show();
+
+
                     }
                 }, new Response.ErrorListener() {
                     @Override
-                    public void onErrorResponse(VolleyError volleyError) {
+                    public void onErrorResponse(VolleyError error) {
+
+                        new AlertDialog.Builder(Signup.this)
+                                .setTitle("Server Response")
+                                .setMessage(error.getMessage())
+                                .create()
+                                .show();
 
                     }
                 }){ //--শেষ 1st bracket এর পরে post method এ data পাঠাতে পারি। Right click > Generate > Overridemethod >getParams<Map>
@@ -98,14 +113,12 @@ public class Signup extends AppCompatActivity {
                     protected Map<String, String> getParams() throws AuthFailureError {
 
                         Map myMap = new HashMap<String,String>();
-                        myMap.put("email","");
-                        myMap.put("password","");
-                        myMap.put("name","");
-                        myMap.put("image","");
+                        myMap.put("email",email);
+                        myMap.put("password",password);
+                        myMap.put("name",name);
+                        myMap.put("image",image);
 
-
-
-                        return super.getParams();
+                        return myMap;
                     }
                 };//--
 
