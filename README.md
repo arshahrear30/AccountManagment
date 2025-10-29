@@ -6,3 +6,17 @@ Step 1 : Manage Databases >> Create Database>>New Database>>"name">>Create .
 Step 2 : Create Database User(s)>>New User>>Password (auto generate)>>!sqADvIInA >> Create 
 Step 3 : Add User To Database>>User(Select)>>Database(Select)>>Add
 
+  <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    build.gradle(app)
+    implementation 'com.android.volley:volley:1.2.1'
+
+    
+    buildTypes {
+        release {
+            minifyEnabled true// false default thakey .. এটা true করে দেবো 
+            shrinkResources true //ei line add korbo ....তাহলে কেউ app hack করলে আমার code পাবে না, code উল্টাপাল্টা হয়ে যাবে
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
