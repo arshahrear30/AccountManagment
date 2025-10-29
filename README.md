@@ -5,6 +5,26 @@ App create করবো ফার্স্ট এ তাহলে Activitymain.x
 Step 1 : Manage Databases >> Create Database>>New Database>>"name">>Create .
 Step 2 : Create Database User(s)>>New User>>Password (auto generate)>>!sqADvIInA >> Create 
 Step 3 : Add User To Database>>User(Select)>>Database(Select)>>Add
+Step 4 : Privileges For Database >> All >> Submit 
+
+Go : phpMyAdmin
+
+Table name: my_table
+Number of columns : 5  -(id,photo,email,password,name)
+
+Name :  Type :  Length/Values : 	Default :  Attributes :  Null	Index :
+
+id       INT                                                primary   ✔️ click
+email    VARCHAR   200              Null        ✔️ 
+name    VARCHAR    100              Null        ✔️
+mobile  VARCHAR     20              Null        ✔️
+image   VARCHAR    200              Null        ✔️
+
+image bitmap কিন্তু store করবো না । সেটার একটা image file এ রেখে ওইখান থেকে url দিয়ে load করাবো 
+
+ click Save .
+
+
 
   <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
