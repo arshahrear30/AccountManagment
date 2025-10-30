@@ -12,7 +12,7 @@
 
     <RelativeLayout
         android:layout_width="220dp"
-        android:layout_height="220dp"
+        android:layout_height="240dp"
         android:layout_marginBottom="20dp"
         >
 
@@ -20,13 +20,13 @@
             android:id="@+id/imageProfile"
             android:layout_width="220dp"
             android:layout_height="220dp"
-            android:src="@drawable/ic_launcher_background"/>
+            android:src="@drawable/defaultcover"/>
         <TextView
             android:id="@+id/tvChangePhoto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Change Photo"
-            android:background="#857C7C"
+            android:background="#1B000000"
             android:gravity="center"
             android:layout_alignParentBottom="true"
             android:padding="8dp"
