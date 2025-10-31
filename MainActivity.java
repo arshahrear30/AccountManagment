@@ -13,10 +13,7 @@ import androidx.core.view.WindowInsetsCompat;
 public class MainActivity extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
-
-
-
-
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         try {
-            MyMethods.MY_KEY=MyMethods.encryptData("arText","arPassword");
+            MyMethods.MY_KEY=MyMethods.encryptData("arText");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
