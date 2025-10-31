@@ -15,7 +15,7 @@ Number of columns : 5  -(id,photo,email,password,name)
 Name :  Type :  Length/Values : 	Default :  Attributes :  Null	Index :
 
 id       INT                                                primary   ✔️ click
-email    VARCHAR   200              Null        ✔️ 
+email    TEXT     2000              Null        ✔️ 
 name    VARCHAR    100              Null        ✔️
 mobile  VARCHAR     20              Null        ✔️
 image   VARCHAR    200              Null        ✔️
@@ -48,4 +48,4 @@ PHP এর link এ ঢুকলে তো যে কেউ আমার file �
 
 Mouse Right clcik(pacage name) >> Java class >>Class >>MyMethods(name) >>enter>>
 
-
+3077 --- more safe by using encription in email and password section 
