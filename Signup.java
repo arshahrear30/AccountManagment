@@ -113,8 +113,14 @@ public class Signup extends AppCompatActivity {
                     protected Map<String, String> getParams() throws AuthFailureError {
 
                         Map myMap = new HashMap<String,String>();
-                        myMap.put("email",email);
-                        myMap.put("password",password);
+                        try {
+                            myMap.put("email",MyMethods.encryptData(inputEmail.getText().toString()));
+                            myMap.put("password",MyMethods.encryptData(inputPassword.getText().toString()));
+
+                        } catch (Exception e) {
+                            throw new RuntimeException(e);
+                        }
+
                         myMap.put("name",name);
                         myMap.put("image",image);
                         myMap.put("key",MyMethods.MY_KEY);
