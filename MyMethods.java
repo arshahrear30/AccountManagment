@@ -12,11 +12,11 @@ public class MyMethods {
 
 
 //===================================
-    public static String encryptData(String text, String pass) throws Exception {
+    public static String encryptData(String text) throws Exception {
         String plainText = text;
         byte[] plaiTextBytes = plainText.getBytes( "UTF-8");
 
-        String password = pass; //"aB3$dEfGh1JkLmNo"; //16 bit
+        String password = "arText"; //"aB3$dEfGh1JkLmNo"; //16 bit
         byte[] passwordBytes = password.getBytes("UTF-8");
         //Encrypt
         SecretKeySpec secretKey = new SecretKeySpec(passwordBytes,  "AES");
@@ -33,4 +33,3 @@ public class MyMethods {
 
 
 }
- 
