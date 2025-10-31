@@ -1,6 +1,7 @@
 package com.arshahrear.accountmanagment;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
@@ -84,7 +85,23 @@ public class Signup extends AppCompatActivity {
                 String url="https://nubsoft.xyz/apps/signup.php";
                 StringRequest stringRequest=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                     @Override
-                    public void onResponse(String s) {
+                    public void onResponse(String response) {
+
+//------------------------------------
+
+                        if (response.contains("Signup Success")) {
+
+                            SharedPreferences sharedPreferences = getSharedPreferences("myApp", MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("email", email);
+                            editor.apply();
+
+                            startActivity(new Intent( Signup.this, MainActivity.class));
+                            finish();
+
+                        }
+//------------------------------------
+
 
                         new AlertDialog.Builder(Signup.this)
                                 .setTitle("Server Response")
