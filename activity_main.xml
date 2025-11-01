@@ -1,27 +1,109 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:layout_margin="16dp">
+package com.arshahrear.accountmanagment;
 
-    <ImageView
-        android:layout_width="220dp"
-        android:layout_height="220dp"
-        android:src="@drawable/ic_launcher_background"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Result Here"
-        android:textSize="18dp"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="LogOUT"/>
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
 
-</LinearLayout>
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class MainActivity extends AppCompatActivity {
+
+    SharedPreferences sharedPreferences;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_main);
+
+        sharedPreferences=getSharedPreferences("myApp",MODE_PRIVATE);
+
+
+        try {
+            MyMethods.MY_KEY=MyMethods.encryptData("arText");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+
+        String email=sharedPreferences.getString("email","");
+
+        //User একবার login করলে ঐ password SharedPreference এ if else দিয়ে store হবে। এখন ধরো ফাঁকা box ধরে রাখছি। ঐটায় email password box এর if else ফেলে বললাম ভিতরে কিছু থাকলে auto login হও, না থাকলে login page এ নিয়ে যাও।
+        if (email.length()<=0){
+
+            startActivity(new Intent(this,Login.class));
+            finish();//finish() এটা এই activity ভুলিয়ে দেবে । তাহলে user login করলে এই activity-টায় back আর আসবে না ।
+        }else{
+
+            objectRequest();
+
+        }
+
+    }
+    //----------------------------
+
+
+    //ppppppppppppppppppppp
+
+    private void objectRequest() {
+        String url = "https://bongotech.xyz/apps/juba.php";
+
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("key", MyMethods.MY_KEY);
+            jsonObject.put( "email", sharedPreferences.getString( "email", ""));
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+
+        JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {
+        @Override
+        public void onResponse(JSONObject response){
+
+            try {
+
+                String result = response.getString("result");
+                String image = response.getString("image");
+
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
+
+        }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                new AlertDialog.Builder(MainActivity.this)
+                        .setTitle("Server Response")
+                        .setMessage(error.getMessage())
+                        .create()
+                        .show();
+
+            }
+        });
+
+        RequestQueue requestQueue = Volley.newRequestQueue( MainActivity.this);
+        requestQueue.add(objectRequest);
+    }
+
+    //ppppppppppppppppppppp
+
+}
