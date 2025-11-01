@@ -100,14 +100,20 @@ public class Signup extends AppCompatActivity {
                             finish();
 
                         }
+                        else {
+
+                            new AlertDialog.Builder(Signup.this)
+                                    .setTitle("Server Response")
+                                    .setMessage("response")
+                                    .create()
+                                    .show();
+
+
+                        }
 //------------------------------------
 
 
-                        new AlertDialog.Builder(Signup.this)
-                                .setTitle("Server Response")
-                                .setMessage("response")
-                                .create()
-                                .show();
+
 
 
                     }
