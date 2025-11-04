@@ -1,12 +1,12 @@
 <?php
 $json = file_get_contents('php://input');
-$data = json_decode($json,true);
+$data = json_decode($json);
 
 $key = $data['key'];
 $email = $data['email'];
 $decryptedKey = decryptData($key);
 
-if ($decryptedKey == 'Juba112233' && strlen($email) > 0) {
+if ($decryptedKey == 'arText1234567890' && strlen($email) > 0) {
     $temp = array();
 
     $con = mysqli_connect('localhost', 'zftsszne_rahman', 'rahman722@gmail.com', 'zftsszne_my_database');
@@ -30,7 +30,7 @@ if ($decryptedKey == 'Juba112233' && strlen($email) > 0) {
 
 function decryptData($text){
     $decode = base64_decode($text);
-    $decrypted = openssl_decrypt($decode, 'AES-128-ECB', 'Juba#12345678901', OPENSSL_RAW_DATA);
+    $decrypted = openssl_decrypt($decode, 'AES-128-ECB', 'arText1234567890', OPENSSL_RAW_DATA);
     return $decrypted;
 }
 
