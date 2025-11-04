@@ -3,6 +3,7 @@ package com.arshahrear.accountmanagment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -49,11 +50,9 @@ public class MainActivity extends AppCompatActivity {
         buttonLogout=findViewById(R.id.buttonLogout);
 
 
-
-
-
         try {
-            MyMethods.MY_KEY=MyMethods.encryptData("arText");
+            MyMethods.MY_KEY=MyMethods.encryptData("arText1234567890");
+            Log.d("ENCRYPTED_KEY", MyMethods.MY_KEY);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -139,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
 
                 new AlertDialog.Builder(MainActivity.this)
                         .setTitle("Server Response")
-                        .setMessage(error.getMessage())
+                        .setMessage(error != null ? error.toString() : "Unknown error")
                         .create()
                         .show();
 
