@@ -49,3 +49,55 @@ PHP এর link এ ঢুকলে তো যে কেউ আমার file �
 Mouse Right clcik(pacage name) >> Java class >>Class >>MyMethods(name) >>enter>>
 
 3077 --- more safe by using encription in email and password section 
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+API call, HTTP request, data fetching :
+
+implementation 'com.android.volley:volley:1.2.1'
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+
+
+=====================================================
+=====================================================
+Image loading and caching library ::
+
+   implementation 'com.github.bumptech.glide:glide:5.0.5'
+
+=====================================================
+=====================================================
+
+--------------------------------------------------------------
+--------------------------------------------------------------
+image picker android library    https://github.com/Dhaval2404/ImagePicker  
+
+implementation 'com.github.dhaval2404:imagepicker:2.1' 
+
+
+  <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+
+    
+
+settings.gradle    :::::::::
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+    }
+}
+
+--------------------------------------------------------------
+--------------------------------------------------------------
+
+
