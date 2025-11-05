@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         try {
-            MyMethods.MY_KEY=MyMethods.encryptData("arText1234567890");
+            MyMethods.MY_KEY = MyMethods.encryptData("arText1122");
             Log.d("ENCRYPTED_KEY", MyMethods.MY_KEY);
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         //User একবার login করলে ঐ password SharedPreference এ if else দিয়ে store হবে। এখন ধরো ফাঁকা box ধরে রাখছি। ঐটায় email password box এর if else ফেলে বললাম ভিতরে কিছু থাকলে auto login হও, না থাকলে login page এ নিয়ে যাও।
         if (email.length()<=0){
 
-            startActivity(new Intent(this,Login.class));
+            startActivity(new Intent(MainActivity.this,Login.class));
             finish();//finish() এটা এই activity ভুলিয়ে দেবে । তাহলে user login করলে এই activity-টায় back আর আসবে না ।
         }else{
 
@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
 
                 new AlertDialog.Builder(MainActivity.this)
-                        .setTitle("Server Response")
+                        .setTitle("Server not Response")
                         .setMessage(error != null ? error.toString() : "Unknown error")
                         .create()
                         .show();
