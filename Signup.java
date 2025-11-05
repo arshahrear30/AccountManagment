@@ -116,7 +116,7 @@ public class Signup extends AppCompatActivity {
 
                             new AlertDialog.Builder(Signup.this)
                                     .setTitle("Server Response")
-                                    .setMessage("response")
+                                    .setMessage(response)
                                     .create()
                                     .show();
 
@@ -134,7 +134,7 @@ public class Signup extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
 
                         new AlertDialog.Builder(Signup.this)
-                                .setTitle("Server Response")
+                                .setTitle("Server not signup Response")
                                 .setMessage(error.getMessage())
                                 .create()
                                 .show();
