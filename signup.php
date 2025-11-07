@@ -1,6 +1,7 @@
 ////প্রথমে apps folder create করে নিবা । ঐটার ভিতর signup.php code add করবা এবং images file create করবা যেইটায় image গুলো store হবে।
 
 
+
 <?php
 $email = $_POST['email'];
 $password = $_POST['password'];
@@ -10,16 +11,21 @@ $key = $_POST['key'];
 
 $security_key=decryptData($key); //1st a kake decode kortay cai ..$key
 $dec_email=decryptData($email);
+
 //$password=decryptData($password);  decrypt korlam na . jate kore aro safe hoi..
 
-if($security_key=='arText1234567890' && strlen($dec_email)>0  && strlen($password)>0 ){ //user email password na dilay databse a data store hoibo na
+if($security_key=='arText1122' && strlen($dec_email)>0  && strlen($password)>0 ){ //user email password na dilay databse a data store hoibo na
 
 
 //----------------------------
 
   $con = mysqli_connect('localhost', 'zftsszne_rahman', 'rahman722@gmail.com', 'zftsszne_my_database'); //user name user password database name 
-  $sql22 ="SELECT * FROM my_table WHERE email LIKE '$dec_email' ";//
-  $result = mysql_query($con, $sql22);
+  $sql22 ="SELECT * FROM mytable WHERE email LIKE '$dec_email' ";//
+  
+
+  $result = mysqli_query($con, $sql22);
+    $rows = mysqli_num_rows($result);
+  
   
     if($rows<=0){ //row er modde oi email ta zero bar er beshi nai 
   //++++++++++++++++++++++++++
@@ -54,7 +60,7 @@ if (file_put_contents($filePath,$decodedImage)) {
 
 function decryptData($text) {
     $decode = base64_decode($text);
-    $decrypted = openssl_decrypt($decode, 'AES-128-ECB', 'arText1234567890', OPENSSL_RAW_DATA);
+    $decrypted = openssl_decrypt($decode, 'AES-128-ECB', '@rText1234567890', OPENSSL_RAW_DATA);
     return $decrypted;
 }
   
