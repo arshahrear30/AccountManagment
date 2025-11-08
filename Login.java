@@ -21,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.HashMap;
@@ -29,7 +30,7 @@ import java.util.Map;
 public class Login extends AppCompatActivity {
 
     Button buttonSignup,buttonLogin;
-    TextInputLayout inputEmail,inputPassword;
+    TextInputEditText inputEmail,inputPassword;
 
 
     @Override
@@ -71,7 +72,7 @@ public class Login extends AppCompatActivity {
 
                             SharedPreferences sharedPreferences = getSharedPreferences("myApp", MODE_PRIVATE);
                             SharedPreferences.Editor editor = sharedPreferences.edit();
-                            editor.putString("email", inputEmail.getEditText().getText().toString());
+                            editor.putString("email", inputEmail.getText().toString());
                             editor.apply();
 
                             startActivity(new Intent(Login.this, MainActivity.class));
@@ -79,11 +80,13 @@ public class Login extends AppCompatActivity {
 
                         } else {
 
-                            new AlertDialog.Builder(Login.this)
-                                    .setTitle("Server Response")
-                                    .setMessage("response")
-                                    .create()
-                                    .show();
+
+
+                                new AlertDialog.Builder(Login.this)
+                                        .setTitle("Login Response")
+                                        .setMessage("response")
+                                        .create()
+                                        .show();
 
 
                         }
@@ -96,7 +99,7 @@ public class Login extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
 
                         new AlertDialog.Builder(Login.this)
-                                .setTitle("Server Response")
+                                .setTitle("Server not login Response")
                                 .setMessage(error.getMessage())
                                 .create()
                                 .show();
@@ -111,8 +114,8 @@ public class Login extends AppCompatActivity {
 
                         Map myMap = new HashMap<String, String>();
                         try {
-                            myMap.put("email", MyMethods.encryptData(inputEmail.getEditText().getText().toString()));
-                            myMap.put("password", MyMethods.encryptData(inputPassword.getEditText().getText().toString()));
+                            myMap.put("email", MyMethods.encryptData(inputEmail.getText().toString()));
+                            myMap.put("password", MyMethods.encryptData(inputPassword.getText().toString()));
                             myMap.put("key", MyMethods.MY_KEY);//encript kora lagbe na ..eta encript korai acay.
 
 
